@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS banco (
+    numero INTEGER NOT null,
+	nome VARCHAR(50) NOT null,
+	ativo BOOLEAN NOT null DEFAULT TRUE,
+	data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (numero)
+);
+
+CREATE TABLE IF NOT EXISTS agencia (
+	banco_numero INTEGER NOT NULL,
+	numero INTEGER NOT NULL,
+	nome VARCHAR(80) NOT NULL,
+	ativo BOOLEAN NOT NULL DEFAULT TRUE,
+	data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (banco_numero,numero),
+	FOREIGN KEY (banco_numero) REFERENCES banco(numero)
+	);
+	
+	
+	
